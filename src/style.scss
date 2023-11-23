@@ -6,7 +6,24 @@
  */
 
 .wp-block-create-block-history-timeline {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+	.wp-block-heading {
+		color: #777;
+		font-size: 28px;
+		font-weight: 500;
+		margin: 0 0 20px;
+		line-height: 1.4;
+	}
+
+	p {
+		margin: 0 0 20px;
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		margin-block: 30px;
+		height: 1px;
+		width: 100%;
+		background-color: #eee;
+	}
 }

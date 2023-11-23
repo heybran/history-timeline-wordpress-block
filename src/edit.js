@@ -11,7 +11,7 @@ import { __ } from '@wordpress/i18n';
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
  */
-import { useBlockProps } from '@wordpress/block-editor';
+import { useBlockProps, useInnerBlocksProps } from '@wordpress/block-editor';
 
 /**
  * Lets webpack process CSS, SASS or SCSS files referenced in JavaScript files.
@@ -30,12 +30,12 @@ import './editor.scss';
  * @return {Element} Element to render.
  */
 export default function Edit() {
-	return (
-		<p { ...useBlockProps() }>
-			{ __(
-				'History Timeline – hello from the editor!',
-				'history-timeline'
-			) }
-		</p>
-	);
+	const blockProps = useBlockProps();
+	const innerBlocksProps = useInnerBlocksProps( blockProps, {
+		allowedBlocks: [ 'core/heading', 'core/paragraph' ],
+		template: [ [ 'core/heading' ], [ 'core/paragraph' ] ],
+		templateLock: 'all',
+	} );
+
+	return <div { ...innerBlocksProps }></div>;
 }
