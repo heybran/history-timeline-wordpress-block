@@ -13,6 +13,8 @@
  * @package           create-block
  */
 
+namespace HistoryTimeline;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -24,7 +26,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  *
  * @see https://developer.wordpress.org/reference/functions/register_block_type/
  */
-function history_timeline_history_timeline_block_init() {
+function init() {
 	register_block_type( __DIR__ . '/build' );
 }
-add_action( 'init', 'history_timeline_history_timeline_block_init' );
+add_action( 'init', __NAMESPACE__ . '\init' );
